@@ -1,4 +1,4 @@
-public class Invoice implements Comparable<T>
+public class Invoice implements Comparable<Invoice>
 {
 	private String customerId;
 	private String invoiceId; 
@@ -7,7 +7,7 @@ public class Invoice implements Comparable<T>
 	public Invoice(String customerId, String invoiceId, double amount)
 	{
 		this.customerId = customerId;
-		this.customerId = invoiceId;
+		this.invoiceId = invoiceId;
 		this.amount = amount;
 	}
 	
@@ -35,12 +35,12 @@ public class Invoice implements Comparable<T>
 		return amount;
 	}
 
-	public double getCustId()
+	public String getCustId()
 	{
 		return customerId;
 	}
 	
-	public double getInvoiceId()
+	public String getInvoiceId()
 	{
 		return invoiceId;
 	}

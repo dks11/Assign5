@@ -82,7 +82,7 @@ public class InvoiceLinkedList
 		else
 		{
 			Node curr = head;
-			int i = 0
+			int i = 0;
 
 			while(curr.next != null && i < index)
 			{
@@ -119,7 +119,7 @@ public class InvoiceLinkedList
 		}
 		else
 		{
-			for (Node curr = head; curr != null; curr = curr.next()) 
+			for (Node curr = head; curr != null; curr = curr.next) 
 			{
 				if (curr.data.compareTo(invoice) == 0) 
 				{
@@ -166,44 +166,9 @@ public class InvoiceLinkedList
 					curr1.next = curr2.next; 
 					curr2.next = temp; 
 				}
-		} 
-/*
-	  Node node1 = getNode(Index1);
-	  Node node2 = getNode(Index2);
-	  
-      if (node1.next == node2 || node2.next == node1) 
-      { 
-          node1.prev.next = node2; 
-          node2.prev = node1.prev; 
-		  
-          node2.next.next = node1;
-          node1.next = node2.next; 
-		  
-          node1.prev = node2; 
-          node2.next = node1; 
-      } 
-      else 
-      { 
-          node2.prev = node1.prev); 
-          node2.next = node1.next;
-		  
-          node1.next.prev = node2; 
-          previousNode1.setNext(y);
-		  
-          node1.prev = node2.prev; 
-          node1.next = node2.next;
-		  
-          node2.next.prev = node1; 
-          node2.prev.next = node1; 
-      }  
-*/
+		}
 
-/*
-	  Node temp = getNode(Index1); 
-      Node temp2 = getNode(Index2); 
-      getNode(Index1) = temp2; 
-      getNode(Index2) = temp; 
-*/
+
 	}
 	
 	
@@ -228,7 +193,7 @@ public class InvoiceLinkedList
 		else
 		{
 			Node curr = head;
-			int i = 0
+			int i = 0;
 
 			while(curr.next != null && i < index)
 			{
@@ -245,7 +210,7 @@ public class InvoiceLinkedList
 	{
 		Node curr = head; 
 
-        while (currNode != null) 
+        while (curr != null) 
 		{ 
             System.out.print(curr.data + " "); 
             curr = curr.next; 
@@ -263,7 +228,21 @@ public class InvoiceLinkedList
 		}
 	}
 	
-	public void getCustomerSublist (String customerId)
+	//GET HELP WITH THIS
+	public void getCustomerSublist(String customerId)
+	{
+		Node curr = head; 
+
+        while (curr != null) 
+		{ 
+			if(curr.data.getCustId() == customerId)
+			{
+				Node addNode = new Node(curr.data);
+			}
+			
+            curr = curr.next; 
+		}
+	}
 	
 
 	private class Node
@@ -278,4 +257,4 @@ public class InvoiceLinkedList
 			next = null;
 		}
 	}
-		
+}
