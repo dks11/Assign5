@@ -78,9 +78,66 @@ public class InvoiceLinkedList
 		{
 			return tail.data;
 		}
-	}
-			
 		
+		else
+		{
+			Node curr = head;
+			int i = 0
+
+			while(curr.next != null && i < index)
+			{
+				curr = curr.next;
+				i++;
+			}
+			
+			return curr.data;
+		}
+		
+	}
+	
+	public boolean remove(Invoice invoice)
+	{
+		if (head == null)
+		{
+            return false; 
+        }
+		
+		if (size == 1) 
+		{ 
+            head = null;
+			tail = null;
+			size--;
+			return true;
+        }
+		
+		if (tail.data.compareTo(invoice) == 0) 
+		{ 
+			tail = tail.prev;
+			tail.next = null;
+			size--;
+			return true;
+		}
+		else
+		{
+			for (Node curr = head; curr != null; curr = curr.next()) 
+			{
+				if (curr.data.compareTo(invoice) == 0) 
+				{
+					curr.prev.next = curr.next;
+					curr.next.prev = curr.prev;
+					size--;
+					return true;
+				}
+			}
+		}
+		return false;
+    }
+
+	public void swapValues(int Index1, int Index2)
+	{	 
+
+
+	}
 
 
 	private class Node
