@@ -229,9 +229,9 @@ public class InvoiceLinkedList
 		}
 	}
 	
-	//GET HELP WITH THIS
-	public void getCustomerSublist(String customerId)
+	public InvoiceLinkedList getCustomerSublist(String customerId)
 	{
+		InvoiceLinkedList list2 = new InvoiceLinkedList();
 		Node curr = head; 
 
         while (curr != null) 
@@ -239,10 +239,11 @@ public class InvoiceLinkedList
 			if(curr.data.getCustId() == customerId)
 			{
 				Node addNode = new Node(curr.data);
+				list2.addEnd(addNode.data);
 			}
-			
             curr = curr.next; 
 		}
+		return list2;
 	}
 	
 	public Node getHead()
