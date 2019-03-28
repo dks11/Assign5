@@ -178,7 +178,7 @@ public class InvoiceLinkedList
 
 
 	}
-
+	/*
 	public Node getNode(int index)throws IndexOutOfBoundsException
 	{
 		if(index > size)
@@ -211,7 +211,8 @@ public class InvoiceLinkedList
 		}
 		
 	}
-
+	*/
+	
 	public void print()
 	{
 		Node curr = head; 
