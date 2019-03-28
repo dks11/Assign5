@@ -36,6 +36,7 @@ public class InvoiceLinkedList
 			addNode.prev = tail;
 			tail = addNode;
 		}
+		size++;
 	}
 
 	public void insert(Invoice invoice)
@@ -69,6 +70,7 @@ public class InvoiceLinkedList
 			curr.next = addNode;
 			addNode.next.prev = addNode;
 		}
+		size++;
 	}
 
 	public Invoice getIndex(int index)throws IndexOutOfBoundsException
@@ -144,74 +146,64 @@ public class InvoiceLinkedList
 
 	public void swapValues(int Index1, int Index2)
 	{	 
-        if (Index1 != Index2)
-		{
-			Node curr1 = head; 
-			while (curr1 != null && curr1.data != getIndex(Index1) ) 
-			{ 
-				curr1 = curr1.next; 
-			} 
-	  
-			Node curr2 = head; 
-			while (curr2 != null && curr2.data != getIndex(Index2) ) 
-			{ 
-				curr2 = curr2.next; 
-			} 
-	  
-				if (curr1 != null || curr2 != null) 
-				{
-					if (curr1.prev != null) 
-						curr1.prev.next = curr2; 
-					else 
-						head = curr2; 
-			  
-					if (curr2.prev != null) 
-						curr2.prev.next = curr1; 
-					else 
-						head = curr1; 
-			  
-					Node temp = curr1.next; 
-					curr1.next = curr2.next; 
-					curr2.next = temp; 
-				}
-		}
-
-
-	}
-	/*
-	public Node getNode(int index)throws IndexOutOfBoundsException
-	{
-		if(index > size)
-		{
-			throw new IndexOutOfBoundsException("Index is too large");
-		}
-		
-		if(index == 0)
-		{
-			return head;
-		}
-		
-		if(index == size)
-		{
-			return tail;
-		}
-		
-		else
-		{
-			Node curr = head;
-			int i = 0;
-
-			while(curr.next != null && i < index)
+	
+		Node temp;
+		if(Index1 == 0)
 			{
-				curr = curr.next;
-				i++;
+				temp = head;
 			}
 			
-			return curr;
-		}
-		
+			if(Index2 == size)
+			{
+				temp = tail;
+			}
+			
+			else
+			{
+				Node curr = head;
+				int i = 0;
+
+				while(curr.next != null && i < Index1)
+				{
+					curr = curr.next;
+					i++;
+				}
+				
+				temp = curr;
+			}
+			
+		Node temp2;
+		if(Index1 == 0)
+			{
+				temp2 = head;
+			}
+			
+			if(Index2 == size)
+			{
+				temp2 = tail;
+			}
+			
+			else
+			{
+				Node curr = head;
+				int i = 0;
+
+				while(curr.next != null && i < Index2)
+				{
+					curr = curr.next;
+					i++;
+				}
+				
+				temp2 = curr;
+			}
+			
+			Node temp3 = new Node(temp.data);
+			temp.data = temp2.data;
+			temp2.data = temp3.data;
+
 	}
-	*/
+	
+	
 	
 	public void print()
 	{

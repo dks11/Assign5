@@ -1,17 +1,14 @@
 public class Sorter
 {
-	//HELP WITH THIS
+	
 	public static void sort(InvoiceLinkedList list)
 	{
-		/*
-		while (curr != null) 
-		{ 
-            if(curr.data.compareTo(curr.next.data) > 0)
+		for(int i = 0; i < list.size()-1; i++) 
+            if(list.getIndex(i).compareTo(list.getIndex(i+1)) < 0)
 			{
-				this.swapValues(curr,curr.next);
+				list.swapValues(i,i+1);
 			}
-		}
-		*/
+	
 	}
 
 }

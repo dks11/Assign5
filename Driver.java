@@ -52,10 +52,10 @@ public class Driver
 			list.addEnd(inv1);
 		}
 		list.print();
-		/*
-		Sorter.sort(list);
+		
+		Sorter.sort(list);	
 		
 		list.print();
-		*/
+		
 	}
 }
