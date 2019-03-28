@@ -6,6 +6,13 @@ public class InvoiceLinkedList
 	
 	private int size;
 	
+	public InvoiceLinkedList()
+	{
+		head = null;
+		tail = null;
+		size = 0;
+	}
+	
 	public int size()
 	{
 		return size;
@@ -19,13 +26,15 @@ public class InvoiceLinkedList
 		{
 			head = addNode;
 			tail = addNode;
+			tail.next = null;
+			head.prev = null;
 		}
 
 		else
 		{
-			addNode.prev =tail;
-   			tail.next = head;
-    			tail = addNode;
+			tail.next = addNode;
+			addNode.prev = tail;
+			tail = addNode;
 		}
 	}
 
@@ -137,7 +146,6 @@ public class InvoiceLinkedList
 	{	 
         if (Index1 != Index2)
 		{
-  
 			Node curr1 = head; 
 			while (curr1 != null && curr1.data != getIndex(Index1) ) 
 			{ 
@@ -170,9 +178,7 @@ public class InvoiceLinkedList
 
 
 	}
-	
-	
-	
+
 	public Node getNode(int index)throws IndexOutOfBoundsException
 	{
 		if(index > size)
@@ -209,11 +215,13 @@ public class InvoiceLinkedList
 	public void print()
 	{
 		Node curr = head; 
+		System.out.println("Customer ID \t" +"Invoice Number \t" + "Amount");
+		System.out.println("----------------------------------------------");
 
-        while (curr != null) 
+		while (curr != null) 
 		{ 
-            System.out.print(curr.data + " "); 
-            curr = curr.next; 
+			System.out.print(curr.data.getCustId() + "\t\t" + curr.data.getInvoiceId() + "\t" + curr.data.getAmount() + "\n"); 
+			curr = curr.next; 
 		}
 	}
 	
@@ -244,6 +252,21 @@ public class InvoiceLinkedList
 		}
 	}
 	
+	public Node getHead()
+	{
+		return head;
+	}
+	
+	public Node getTail()
+	{
+		return tail;
+	}
+	
+	public Node createNode()
+	{
+		Node curr = null;
+		return curr;
+	}
 
 	private class Node
 	{
