@@ -49,7 +49,7 @@ public class InvoiceLinkedList
 			tail = addNode;
 		}
 
-		else if(addNode.data.compareTo(invoice) < 0)
+		else if(addNode.data.compareTo(head.data) < 0)
 		{
 			addNode.next = head;
 			addNode.next.prev = addNode;
@@ -65,10 +65,10 @@ public class InvoiceLinkedList
 				curr = curr.next;
 			}
 			
-			addNode.next = curr.next;
-			addNode.prev = curr;
-			curr.next = addNode;
-			addNode.next.prev = addNode;
+			addNode.next = curr;
+			addNode.prev = curr.prev;
+			curr.prev = addNode;
+			addNode.prev.next = addNode;
 		}
 		size++;
 	}

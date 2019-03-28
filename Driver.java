@@ -39,7 +39,6 @@ public class Driver
 		}
 		InvoiceLinkedList list = new InvoiceLinkedList();
 		
-		
 		while(stdin.hasNext())
 		{
 			scan = new Scanner(stdin.nextLine());
@@ -53,9 +52,55 @@ public class Driver
 		}
 		list.print();
 		
+		System.out.println("-------------------------------------------");
+		
 		Sorter.sort(list);	
 		
 		list.print();
+		
+		System.out.println("-------------------------------------------");
+		
+		System.out.println("Please Enter The Returns File Name ");
+		scan = new Scanner(System.in);
+		String fileName = scan.nextLine();
+		
+		try
+		{
+		f1 = new FileReader(fileName);
+		b1 = new BufferedReader(f1);
+		stdin = new Scanner(b1);
+		}
+		
+		catch(FileNotFoundException e)
+		{
+			System.out.println(e.getMessage());
+			return;
+		}
+		
+		while(stdin.hasNext())
+		{
+			scan = new Scanner(stdin.nextLine());
+			scan.useDelimiter(",");
+			
+			int code = scan.nextInt();
+			String customerId = scan.next();
+			String invoiceId =  scan.next();
+			double amount =  scan.nextDouble();
+			
+			Invoice inv1 = new Invoice(customerId,invoiceId,amount);
+			
+			if(code == 750)
+			{
+				list.remove(inv1);
+			}
+			
+			else if(code == 850)
+			{
+				list.insert(inv1);
+			}
+			
+		}
+		
 		
 	}
 }
