@@ -30,10 +30,10 @@ public class Driver
 		
 		int numOfCust = stdin.nextInt();
 		stdin.nextLine();
-		
+		String temp = stdin.nextLine();
 		for(int i = 0; i < numOfCust; i++)
 		{
-			scan = new Scanner(stdin.nextLine());
+			scan = new Scanner(temp);
 			scan.useDelimiter(",");
 			String custId = scan.next();
 		}
