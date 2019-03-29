@@ -1,6 +1,13 @@
-
+/**
+This is the sorter class, it sorts a given linked list
+@author Dakota Staples
+*/
 public class Sorter{
 
+	/**
+	This is the sorting method that sorts the list
+	@param list The linked list
+	*/
 	public static void sort(InvoiceLinkedList list){
 		int min;
 		Invoice temp;
@@ -14,7 +21,6 @@ public class Sorter{
 					min = scan;
 			}
 
-			// Swap the values
 			list.swapValues(min,i);
 	    }
 	}

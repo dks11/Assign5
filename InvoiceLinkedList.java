@@ -1,11 +1,28 @@
-
+/**
+This is the linked list class of invoices
+@author Dakota Staples
+*/
 
 public class InvoiceLinkedList
 {
-	private Node head, tail;
+	/**
+	This is the head node of the linked list
+	*/
+	private Node head;
 	
+	/**
+	This is the tail node of the linked list
+	*/
+	private Node tail;
+	
+	/**
+	This is the size of the linked list
+	*/
 	private int size;
 	
+	/**
+	This is the constructor for the linked list, setting head and tail to null and size to 0
+	*/
 	public InvoiceLinkedList()
 	{
 		head = null;
@@ -13,11 +30,19 @@ public class InvoiceLinkedList
 		size = 0;
 	}
 	
+	/**
+	This returns the size of the linked list
+	@return the size of the linked list
+	*/
 	public int size()
 	{
 		return size;
 	}
 
+	/**
+	This adds a node to the end of the list
+	@param invoice the invoice that is being added
+	*/
 	public void addEnd(Invoice invoice)
 	{
 		Node addNode = new Node(invoice);
@@ -39,6 +64,10 @@ public class InvoiceLinkedList
 		size++;
 	}
 
+	/**
+	This inserts a node into its correct position into the linked list, using the comparTo method
+	@param invoice the invoice that is being inserted into position
+	*/
 	public void insert(Invoice invoice)
 	{
 		Node addNode = new Node(invoice);
@@ -73,6 +102,10 @@ public class InvoiceLinkedList
 		size++;
 	}
 
+	/**
+	This gets the invoice at a selected index
+	@return the invoice at the selected index
+	*/
 	public Invoice getIndex(int index)throws IndexOutOfBoundsException
 	{
 		if(index > size)
@@ -106,6 +139,11 @@ public class InvoiceLinkedList
 		
 	}
 	
+	/**
+	This removes a node from the list
+	@param invoice The invoice to remove
+	@return whether the removal was successful or not
+	*/
 	public boolean remove(Invoice invoice)
 	{
 		if (head == null)
@@ -144,6 +182,10 @@ public class InvoiceLinkedList
 		return false;
     }
 
+	/**
+	This swaps two nodes in the list
+	@param Index1 the first index to swap
+	*/
 	public void swapValues(int Index1, int Index2)
 	{	 
 	
@@ -204,31 +246,54 @@ public class InvoiceLinkedList
 	}
 	
 	
-	
+	/**
+	This prints the list forwards
+	*/
 	public void print()
 	{
+		double total = 0;
 		Node curr = head; 
 		System.out.println("Customer ID \t" +"Invoice Number \t" + "Amount");
 		System.out.println("----------------------------------------------");
 
 		while (curr != null) 
 		{ 
+			total += curr.data.getAmount();
 			System.out.print(curr.data.getCustId() + "\t\t" + curr.data.getInvoiceId() + "\t" + curr.data.getAmount() + "\n"); 
 			curr = curr.next; 
 		}
+		System.out.println("----------------------------------------------");
+		System.out.println("Total Amount \t\t\t$" + total);
+		System.out.println(" ");
+		
 	}
 	
+	/**
+	This prints the list backwards
+	*/
 	public void printBackwards()
 	{
+		double total = 0;
 		Node curr = tail; 
+		System.out.println("Customer ID \t" +"Invoice Number \t" + "Amount");
+		System.out.println("----------------------------------------------");
 
-        while (curr != null) 
+		while (curr != null) 
 		{ 
-            System.out.print(curr.data + " "); 
-            curr = curr.prev; 
+			total += curr.data.getAmount();
+			System.out.print(curr.data.getCustId() + "\t\t" + curr.data.getInvoiceId() + "\t" + curr.data.getAmount() + "\n"); 
+			curr = curr.prev; 
 		}
+		System.out.println("----------------------------------------------");
+		System.out.println("Total Amount \t\t\t$" + total);
+		System.out.println(" ");
 	}
 	
+	/**
+	This gets a subset of the list based on customer id
+	@param customerId The customer id to get the subset for
+	@return The new subset linked list
+	*/
 	public InvoiceLinkedList getCustomerSublist(String customerId)
 	{
 		InvoiceLinkedList list2 = new InvoiceLinkedList();
@@ -236,7 +301,7 @@ public class InvoiceLinkedList
 
         while (curr != null) 
 		{ 
-			if(curr.data.getCustId() == customerId)
+			if(curr.data.getCustId().equals(customerId))
 			{
 				Node addNode = new Node(curr.data);
 				list2.addEnd(addNode.data);
@@ -246,27 +311,48 @@ public class InvoiceLinkedList
 		return list2;
 	}
 	
+	/**
+	This gets the head node
+	@return the head node
+	*/
 	public Node getHead()
 	{
 		return head;
 	}
 	
+	/**
+	This gets the tail node
+	@return the tail node
+	*/
 	public Node getTail()
 	{
 		return tail;
 	}
-	
-	public Node createNode()
-	{
-		Node curr = null;
-		return curr;
-	}
 
+	/**
+	This is the private node class within the linked list class
+	*/
 	private class Node
 	{
+		/**
+		This is the data in a node
+		*/
 		public Invoice data;
-		public Node prev, next;
 		
+		/**
+		This is the previous pointer
+		*/
+		public Node prev;
+		
+		/**
+		This is the next pointer
+		*/
+		public Node next;
+		
+		/**
+		This is the constructor of the node
+		@param dataIn The data to put in the node
+		*/
 		public Node(Invoice dataIn)
 		{
 			data = dataIn;
